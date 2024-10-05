@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andra Jelek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HEHHEHEHE</h1>
+    <form id="makananForm">
+        <label for="nama">Alamat Gmail:</label><br>
+	<label for="nama">Contoh: bhimaganteng123@gmail.com</label><br>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <label for="makanan">Password:</label><br>
+	<label for="nama">Contoh: Rawr123</label><br>
+        <input type="text" id="makanan" name="makanan" required><br><br>
+
+        <input type="submit" value="Simpan">
+    </form>
+
+    <button id="lihatData">Lihat Data</button>
+    <div class="result" id="result" style="display: none;"></div>
+
+    <script>
+        const form = document.getElementById('makananForm');
+        const resultDiv = document.getElementById('result');
+        const lihatDataButton = document.getElementById('lihatData');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const makanan = document.getElementById('makanan').value;
+
+            const data = { nama, makanan };
+            localStorage.setItem('makananKesukaan', JSON.stringify(data));
+
+            alert('Login Berhasil!');
+            form.reset();
+
+            // Mengarahkan ke link tertentu setelah menyimpan data
+            window.location.href = 'https://www.youtube.com'; // Ganti dengan URL yang diinginkan
+        });
+
+        lihatDataButton.addEventListener('click', function() {
+            const password = prompt('Masukkan password untuk melihat data:');
+
+            if (password === 'password123') { // Ubah password sesuai keinginan
+                const storedData = localStorage.getItem('makananKesukaan');
+                if (storedData) {
+                    const data = JSON.parse(storedData);
+                    resultDiv.innerHTML = `<strong>Alamat Gmail:</strong> ${data.nama}<br><strong>Password:</strong> ${data.makanan}`;
+                    resultDiv.style.display = 'block';
+                } else {
+                    resultDiv.innerHTML = 'Data tidak ditemukan.';
+                    resultDiv.style.display = 'block';
+                }
+            } else {
+                alert('Password salah!');
+            }
+        });
+    </script>
+</body>
+</html>
