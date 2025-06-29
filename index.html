@@ -1,76 +1,112 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andra Jelek</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .result {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>APLIKASI PENCETAK UANG TOTALLY REAL</title>
+  <style>
+    body {
+      background: #ffff00;
+      color: #0000ff;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: red;
+      margin-top: 30px;
+      text-shadow: 2px 2px #00ff00;
+      background: pink;
+      padding: 10px;
+      border: 5px dotted blue;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 20px;
+      background-color: #00ffff;
+      padding: 10px;
+      border: 3px dashed red;
+    }
+
+    #chart {
+      width: 95%;
+      max-width: 500px;
+      height: 200px;
+      margin: 30px auto;
+      background: white;
+      border: 5px solid black;
+      position: relative;
+    }
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      background-color: purple;
+      color: yellow;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    button {
+      background-color: red;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: 4px double black;
+      cursor: pointer;
+      animation: flash 0.8s infinite alternate;
+    }
+
+    @keyframes flash {
+      0% { background-color: red; }
+      100% { background-color: orange; }
+    }
+
+    .testimoni {
+      margin-top: 40px;
+      background-color: #ff66ff;
+      color: black;
+      padding: 15px;
+      font-style: italic;
+      border: 4px groove green;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+      .bar {
+        width: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>HEHHEHEHE</h1>
-    <form id="makananForm">
-        <label for="nama">Alamat Gmail:</label><br>
-	<label for="nama">Contoh: bhimaganteng123@gmail.com</label><br>
-        <input type="text" id="nama" name="nama" required><br><br>
 
-        <label for="makanan">Password:</label><br>
-	<label for="nama">Contoh: Rawr123</label><br>
-        <input type="text" id="makanan" name="makanan" required><br><br>
+  <h1> APLIKASI PENCETAK UANG TOTALLY REAL </h1>
 
-        <input type="submit" value="Simpan">
-    </form>
+  <p>Berikan saja uang sekitar <strong style="color:red;">Rp1.500.000</strong>, kamu bisa menghasilkan sampai <strong style="color:green;">Rp1 TRILIUNNN!!!</strong><br><br>
+  Dijamin <u>tidak</u> mengecewakan (kecuali dompe-)</p>
 
-    <button id="lihatData">Lihat Data</button>
-    <div class="result" id="result" style="display: none;"></div>
+  <div id="chart">
+    <div class="bar" style="left: 20px; height: 30px;">Rp0</div>
+    <div class="bar" style="left: 80px; height: 60px;">10jt</div>
+    <div class="bar" style="left: 140px; height: 110px;">100jt</div>
+    <div class="bar" style="left: 200px; height: 180px;">1T</div>
+    <div class="bar" style="left: 30px; height: 40px;">Rp10k</div>
+  </div>
 
-    <script>
-        const form = document.getElementById('makananForm');
-        const resultDiv = document.getElementById('result');
-        const lihatDataButton = document.getElementById('lihatData');
+  <button onclick="alert('hahaha device kamu di hek, hubungi 08**********')"> CETAK SEKARANG(gakmungkinpalsukoq) </button>
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
+  <div class="testimoni">
+    <h3>🗣 Testimoni Pengguna</h3>
+    <p>"Ini berjasa banget, gara-gara aplikasi ini saya hilang 1,5 juta lebih. Ini bikin motivasi saya dalam bekerja keras kembali!"<br><br><strong>- Pak Budi, korban semangat</strong></p>
+  </div>
 
-            const nama = document.getElementById('nama').value;
-            const makanan = document.getElementById('makanan').value;
-
-            const data = { nama, makanan };
-            localStorage.setItem('makananKesukaan', JSON.stringify(data));
-
-            alert('Login Berhasil!');
-            form.reset();
-
-            // Mengarahkan ke link tertentu setelah menyimpan data
-            window.location.href = 'https://www.youtube.com'; // Ganti dengan URL yang diinginkan
-        });
-
-        lihatDataButton.addEventListener('click', function() {
-            const password = prompt('Masukkan password untuk melihat data:');
-
-            if (password === 'password123') { // Ubah password sesuai keinginan
-                const storedData = localStorage.getItem('makananKesukaan');
-                if (storedData) {
-                    const data = JSON.parse(storedData);
-                    resultDiv.innerHTML = `<strong>Alamat Gmail:</strong> ${data.nama}<br><strong>Password:</strong> ${data.makanan}`;
-                    resultDiv.style.display = 'block';
-                } else {
-                    resultDiv.innerHTML = 'Data tidak ditemukan.';
-                    resultDiv.style.display = 'block';
-                }
-            } else {
-                alert('Password salah!');
-            }
-        });
-    </script>
 </body>
 </html>
